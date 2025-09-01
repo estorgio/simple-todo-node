@@ -1,0 +1,68 @@
+<%- contentFor('title') %> Write your tasks for today <%- contentFor('body') %>
+<div class="row mt-3 text-right">
+  <div class="col">
+    <a
+      class="btn btn-primary btn-lg w-100 d-block d-lg-none"
+      role="button"
+      href="/create"
+      >New Todo</a
+    >
+    <a
+      class="btn btn-primary btn-lg d-none d-lg-inline-block"
+      role="button"
+      href="/create"
+      >New Todo</a
+    >
+  </div>
+</div>
+
+<div class="row mt-3 d-flex flex-column">
+  <% if (!todos || todos?.length <= 0) { %>
+  <div class="col my-2">
+    <div class="fs-2 opacity-50">There are no entries for now.</div>
+  </div>
+  <% } else { %> <% todos.forEach(todo => { %>
+  <div class="col my-2">
+    <div class="card">
+      <div class="card-body">
+        <small
+          class="<%= todo.isDone ? 'opacity-25' : '' %>"
+          title="<%= dayjs(todo.createdAt).format('MMMM D, YYYY hh:mm A z') %>"
+          >Added <%= dayjs(todo.createdAt).fromNow() %>
+        </small>
+        <p class="fs-2 <%= todo.isDone ? 'opacity-25' : '' %>">
+          <%= todo.text %>
+        </p>
+        <a
+          href="#"
+          type="button"
+          class="btn <%= todo.isDone ? 'btn-success' : 'btn-outline-success'%> btn-mark-as-done"
+          data-id="<%= todo.id %>"
+        >
+          Mark as done
+        </a>
+        <a
+          href="/<%= todo.id %>/edit"
+          type="button"
+          class="btn btn-outline-dark"
+          >Edit</a
+        >
+
+        <form
+          class="btn-delete d-inline-block"
+          action="/<%= todo.id %>?_method=DELETE"
+          method="POST"
+        >
+          <!-- {{ form.csrf_token }} -->
+          <input
+            type="submit"
+            value="Delete"
+            class="btn-delete btn btn-outline-danger"
+            data-id="<%= todo.id %>"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+  <% })}; %>
+</div>

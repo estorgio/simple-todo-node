@@ -1,0 +1,59 @@
+footer {
+  margin-top: 100px;
+}
+
+.todos {
+  padding-left: 0;
+  max-width: 800px;
+}
+
+.todo {
+  list-style: none;
+  padding: 13px 13px;
+}
+
+.todo-done,
+.todo-done a {
+  color: #b1b1b1;
+  text-decoration: none;
+}
+
+.todo:nth-child(odd) {
+  background-color: #e6e6e6;
+}
+
+.todo-metadata {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.todo-controls {
+  margin-top: 10px;
+}
+
+form.btn-delete,
+form.btn-delete input[type='submit'] {
+  display: inline-block;
+}
+
+form.btn-delete input[type='submit'] {
+  background: none;
+  color: blue;
+  text-decoration: underline;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+form.btn-delete button:hover {
+  color: darkblue; /* optional: change color on hover */
+}
+
+.form-error {
+  border: 1px solid hsl(0, 68%, 38%);
+  margin: 10px 0;
+  background-color: hsl(0, 68%, 80%);
+  max-width: 800px;
+  padding: 5px 10px;
+}

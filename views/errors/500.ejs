@@ -1,0 +1,12 @@
+<%- contentFor('title') %> Internal Server Error <%- contentFor('body') %>
+<div>
+  <h1>Server Error</h1>
+  <p>Something wrong occured in the server at the moment.</p>
+
+  <% if (node_environment === 'development') { %>
+  <strong>Error: <%= error.message %></strong>
+  <pre>
+    <%= error.stack %>
+  </pre>
+  <% } %>
+</div>

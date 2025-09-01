@@ -1,0 +1,31 @@
+{
+  "name": "simple-todo-node",
+  "version": "1.0.0",
+  "description": "A simple TODO app made with Express.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --env-file=.env app.js",
+    "start": "node app.js",
+    "keygen": "node -e \"console.log(require('crypto').randomBytes(64).toString('base64'))\""
+  },
+  "author": "Fortunato Estorgio",
+  "license": "ISC",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "dayjs": "^1.11.18",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "http-status-codes": "^2.3.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.18.0",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

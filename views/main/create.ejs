@@ -1,0 +1,50 @@
+<%- contentFor('title') %> Create new todo <%- contentFor('body') %>
+<div class="row mt-3 text-right">
+  <div class="col">
+    <a
+      class="btn btn-secondary btn-lg w-100 d-block d-lg-none"
+      role="button"
+      href="/"
+      >Go Back
+    </a>
+    <a
+      class="btn btn-secondary btn-lg d-none d-lg-inline-block"
+      role="button"
+      href="/"
+    >
+      Go Back
+    </a>
+  </div>
+</div>
+
+<div class="row mt-4 d-flex flex-column">
+  <%- include('../partials/validation-error') %>
+  <div class="col-12">
+    <form action="/" method="POST">
+      <!-- {{ form.csrf_token }} -->
+      <div>
+        <label for="todo-text" class="form-label mt-4 d-none">
+          Contents:
+        </label>
+        <textarea
+          class="form-control fs-2"
+          id="todo-text"
+          rows="3"
+          placeholder="What is your task for today?"
+          name="text"
+          maxlength="512"
+        ></textarea>
+        <input
+          type="submit"
+          class="btn btn-primary btn-lg mt-2 w-100 d-block d-lg-none"
+          value="Save Todo"
+        />
+        <input
+          type="submit"
+          class="btn btn-primary btn-lg mt-2 d-none d-lg-inline-block"
+          value="Save Todo"
+        />
+      </div>
+    </form>
+  </div>
+</div>
