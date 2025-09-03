@@ -18,6 +18,10 @@ import {
 } from './middlewares/error-middleware.js';
 import globalsMiddleware from './middlewares/globals-middleware.js';
 import { initDemo } from './utils/demo.js';
+import {
+  gracefulShutdownMiddleware,
+  enableGracefullShutdown,
+} from './utils/graceful-shutdown.js';
 
 // Get the directory name
 const __filename = fileURLToPath(import.meta.url);
@@ -27,6 +31,7 @@ async function main(listen = False) {
   // Initialize Express instance
   const app = express();
   app.set('trust proxy', parseInt(process.env.PROXY_COUNT ?? 0));
+  app.use(gracefulShutdownMiddleware);
 
   // Connect to database
   await connectToDatabase();
@@ -69,9 +74,10 @@ async function main(listen = False) {
   app.use(errorHandler);
 
   if (listen) {
-    app.listen(config.PORT, () =>
+    const serverInstance = app.listen(config.PORT, () =>
       console.log(`App is now listening on port ${config.PORT}.`)
     );
+    enableGracefullShutdown(serverInstance);
   }
 
   return app;
