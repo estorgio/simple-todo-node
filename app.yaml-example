@@ -1,0 +1,33 @@
+# Deployment config for Google App Engine
+
+service: 'simple-todo-node'
+
+runtime: nodejs22
+
+instance_class: F1 # cheapest instance; optional
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 1
+
+env_variables:
+  # Application name
+  APP_NAME: 'simple-todo-node'
+
+  # Shown in page title in browser
+  APP_TITLE: 'Simple Todo'
+
+  # Secret key used for session and cookies
+  # To generate new keys, run the following command
+  # and paste it here
+  # npm run keygen
+  APP_SECRET_KEY: ''
+
+  # MongoDB connection String
+  MONGODB_URI: ''
+
+  # Number of reverse proxies placed in front of Express instance
+  # In case of GAE, it's just 2 reverse proxies
+  PROXY_COUNT: 2
+
+entrypoint: node app.js
